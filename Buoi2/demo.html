@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form demo</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Desc</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="tBody">
+
+        </tbody>
+    </table>
+    <form action="" id="formDemo">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter your name" required>
+        </div>
+        <div>
+            <label for="desc">Desc</label>
+            <input type="text" name="desc" id="desc">
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="text" name="price" id="price">
+        </div>
+        <div>
+            <label for="address">Adress</label>
+            <select name="address" id="address">
+                <option value="Hue">Hue 123 </option>
+                <option value="Ho Chi Minh">Ho Chi Minh 123</option>
+                <option value="Ha Noi">Ha Noi</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="SUBMIT">
+        </div>
+    </form>
+    <script>
+        let formDemo = document.getElementById('formDemo');
+        formDemo.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let formData = new FormData(formDemo);
+            console.log(...formData);
+            let html = `<tr>`;
+            formData.forEach((data) => {
+                html += `<td>${data}</td>`;
+            })
+            html += `</tr>`;
+
+            document.getElementById('tBody').innerHTML += html;
+        })
+    </script>
+</body>
+</html>
